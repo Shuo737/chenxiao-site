@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import titleImg from "./assets/imgs/titleImg.JPG";
+import titleImg from "./assets/imgs/titleImg.jpg";
 
 function Header({ onNavigate }) {
   const menuItems = ["Home", "Products"];
