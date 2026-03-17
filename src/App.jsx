@@ -61,7 +61,7 @@ function Footer() {
 
 function HomeContent({ onNavigate }) {
   // Feature images: featureImg 1..4 in src/assets/imgs
-  const imgModules = import.meta.glob("./assets/imgs/*", { eager: true, as: "url" });
+  const imgModules = import.meta.glob("./assets/imgs/*", { eager: true });
   const featureLabels = ["Necklaces", "Rings", "Ear Rings", "Bracelets"];
   const featureItems = featureLabels.map((label, idx) => {
     const n = idx + 1;
@@ -70,7 +70,7 @@ function HomeContent({ onNavigate }) {
       const fname = path.split("/").pop().split(".")[0].toLowerCase();
       const compact = fname.replace(/\s+/g, "");
       if (compact === `featureimg${n}` || fname.includes(`featureimg ${n}`) || fname.includes(`featureimg${n}`)) {
-        found = imgModules[path];
+        found = imgModules[path].default;
         break;
       }
     }
@@ -151,7 +151,7 @@ function ProductPage() {
   const perSection = 12; // 5 sections * 12 = 60
 
   // eagerly load any local images placed in src/assets/imgs (Vite)
-  const imgModules = import.meta.glob("./assets/imgs/*", { eager: true, as: "url" });
+  const imgModules = import.meta.glob("./assets/imgs/*", { eager: true });
   const normalize = (s) => String(s).replace(/[^a-z0-9]/gi, "").toLowerCase();
   function findLocalImage(section, idx) {
     const normSection = normalize(section);
@@ -180,11 +180,11 @@ function ProductPage() {
       ];
 
       for (const cand of candidates) {
-        if (nf === cand || nf.includes(cand)) return imgModules[path];
+        if (nf === cand || nf.includes(cand)) return imgModules[path].default;
       }
 
       for (const cand of candidatesRaw) {
-        if (fnameRaw === cand || fnameRaw.includes(cand)) return imgModules[path];
+        if (fnameRaw === cand || fnameRaw.includes(cand)) return imgModules[path].default;
       }
     }
 
@@ -220,7 +220,7 @@ function ProductPage() {
 
       if (matched) {
         localMap[section] = localMap[section] || [];
-        localMap[section].push({ url: imgModules[path], num });
+        localMap[section].push({ url: imgModules[path].default, num });
         break;
       }
     }
