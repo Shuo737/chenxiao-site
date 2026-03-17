@@ -93,9 +93,11 @@ function HomeContent({ onNavigate }) {
                 display: "flex",
                 flexDirection: "column",
                 minHeight: 240,
+                maxWidth: 300,
+                margin: "20px auto",
               }}
             >
-              <img src={f.src} alt={f.label} style={{ width: "100%", height: "auto", objectFit: "contain" }} />
+              <img src={f.src} alt={f.label} style={{ width: "100%", height: "auto", maxHeight: "300px", objectFit: "contain" }} />
               <p style={{ marginTop: "auto", marginBottom: 0, textAlign: "center" }}>{f.label}</p>
             </div>
           ))}
@@ -269,7 +271,7 @@ function ProductPage() {
                       minHeight: 240,
                     }}
                   >
-                    <img src={src} alt={img.name} style={{ width: "100%", height: "auto", objectFit: "contain" }} />
+                    <img src={src} alt={img.name} style={{ width: "100%", height: "auto", maxHeight: "200px", objectFit: "contain" }} />
                     <p style={{ marginTop: "auto", marginBottom: 0, textAlign: "center" }}>{img.name}</p>
                   </div>
                 );
