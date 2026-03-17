@@ -82,7 +82,7 @@ function HomeContent({ onNavigate }) {
       <section style={{ padding: 60, textAlign: "center" }}>
         <h2>Featured Products</h2>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20, marginTop: 40 }}>
+        <div className="feature-grid">
           {featureItems.map((f) => (
             <div
               key={f.label}
